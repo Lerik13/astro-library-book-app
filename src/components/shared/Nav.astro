@@ -1,0 +1,28 @@
+---
+import { Button } from "../ui/button"
+
+const navItems  = [
+  {
+    label: "Home",
+    href: "/"
+  },
+
+]
+---
+
+<nav class="w-full max-w-7xl mx-auto flex items-center justify-between py-1.5 px-4 bg-amber-50 shadow-amber-400 rounded-lg">
+  <Button variant="link">
+    <a href="/">Book Tracker</a>
+  </Button>
+  <ul class="flex items-center gap-2">
+    {
+      navItems.map((item) => (
+        <li>
+          <Button variant="link">
+            <a href={item.href}>{item.label}</a>
+          </Button>
+        </li>
+    ))
+    }
+  </ul>
+</nav>
