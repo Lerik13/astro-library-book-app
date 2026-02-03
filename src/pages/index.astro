@@ -1,37 +1,10 @@
 ---
-import Input from "@/components/starwind/input";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SearchBooks from "@/components/search/SearchBooks";
 ---
 
 <BaseLayout>
 	<h1 class="text-3xl font-bold">Search for a books</h1>
-	<form class="grid gap-2 max-w-lg" id="search-form">
-		<Input type="search" name="q" placeholder="Search for a book" />
-		<button type="submit">Search</button>
-	</form>
+	<SearchBooks client:load />
 </BaseLayout>
-
-<script>
-import { actions } from "astro:actions"
-
-	const searchForm = document.querySelector("#search-form") as HTMLFormElement
-
-	searchForm.addEventListener("submit", async (e) => {
-		e.preventDefault()
-
-		const formData = new FormData(searchForm)
-		const q = formData.get("q")
-
-		const {error, data} = await actions.searchBooks(String(q))
-
-		if (error) {
-			console.error(error)
-			alert("Error searching for books")
-		}
-		
-		console.log(data)
-	})
-
-
-</script>
 

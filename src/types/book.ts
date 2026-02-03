@@ -1,3 +1,14 @@
+export interface ProcessedBook {
+  title: string
+  author: string
+  cover: {
+    url: string | null
+    width: number
+    height: number
+  }
+  id: string
+}
+
 export interface Book {
   cover_i: number
   has_fulltext: boolean

@@ -1,11 +1,13 @@
-import type { BookResponse, CoverResponse } from '@/types/book'
 import { z } from 'astro/zod'
 import { defineAction } from 'astro:actions'
+import type { BookResponse, CoverResponse } from '@/types/book'
 
 export const server = {
   searchBooks: defineAction({
     accept: 'json',
-    input: z.string().min(3).max(30),
+    input: z.object({
+      q: z.string().min(3).max(30),
+    }),
     handler: async ({ q }) => {
       try {
         const res = await fetch(
