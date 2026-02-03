@@ -26,6 +26,21 @@ function SearchBooks() {
     setIsLoading(false)
   }
 
+  const handleSave = async (book: ProcessedBook) => {
+    const { error, data } = await actions.saveBook({
+      title: book.title,
+      author: book.author,
+      cover: book.cover,
+    })
+    if (error) {
+      console.error(error)
+      alert('Error saving book')
+    }
+    if (data) {
+      console.log(data)
+    }
+  }
+
   return (
     <>
       <form className='grid gap-2 max-w-lg' onSubmit={handleSubmit}>
@@ -66,6 +81,10 @@ function SearchBooks() {
             ) : (
               <div className='h-60 bg-gray-200'></div>
             )}
+            <Button variant='outline' onClick={() => handleSave(book)}>
+              <Save className='w-4 h-4' />
+              <span>Save Book</span>
+            </Button>
           </div>
         ))}
       </div>
