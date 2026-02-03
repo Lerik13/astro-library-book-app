@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
-import { actions } from 'astro:actions'
 import type { ProcessedBook } from '@/types/book'
+import { actions } from 'astro:actions'
+import { Loader2, Save, SearchIcon } from 'lucide-react'
+import React, { useState } from 'react'
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 
 function SearchBooks() {
   const [query, setQuery] = useState('')
   const [books, setBooks] = useState<ProcessedBook[]>([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setIsLoading(true)
     e.preventDefault()
 
     const { error, data } = await actions.searchBooks({ q: query })
@@ -19,8 +22,8 @@ function SearchBooks() {
     }
     if (data) {
       setBooks(data as unknown as ProcessedBook[])
-      console.log(data)
     }
+    setIsLoading(false)
   }
 
   return (
@@ -33,7 +36,19 @@ function SearchBooks() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <Button type='submit'>Search</Button>
+        <Button type='submit' disabled={isLoading}>
+          {isLoading ? (
+            <>
+              <span>Fetching books...</span>
+              <Loader2 className='w-4 h-4 animate-spin' />
+            </>
+          ) : (
+            <>
+              <span>Search</span>
+              <SearchIcon className='w-4 h-4' />
+            </>
+          )}
+        </Button>
       </form>
       <div className='grid grid-cols-4 gap-4'>
         {books.map((book) => (
