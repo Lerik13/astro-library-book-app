@@ -52,3 +52,9 @@
 - Cloud-based database
 - Book categories and tags
 - Reading status (Want to Read / Reading / Finished)
+
+| ![Main Page](https://github.com/Lerik13/magic-artstudio/blob/master/screenshots/1.jpg) |
+
+---
+
+| ![Main Page](https://github.com/Lerik13/magic-artstudio/blob/master/screenshots/1.jpg) |
