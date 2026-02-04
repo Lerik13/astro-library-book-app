@@ -53,8 +53,8 @@
 - Book categories and tags
 - Reading status (Want to Read / Reading / Finished)
 
-![Search book](https://github.com/Lerik13/astro-library-book-app/blob/main/public/screenshots/img1.jpg)
+| ![Search book](https://github.com/Lerik13/astro-library-book-app/blob/main/public/screenshots/img1.jpg) |
+| ------------------------------------------------------------------------------------------------------- |
 
----
-
-![My Library](https://github.com/Lerik13/astro-library-book-app/blob/main/public/screenshots/img2.jpg)
+| ![My Library](https://github.com/Lerik13/astro-library-book-app/blob/main/public/screenshots/img2.jpg) |
+| ------------------------------------------------------------------------------------------------------ |
