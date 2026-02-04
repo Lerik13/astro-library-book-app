@@ -1,43 +1,54 @@
-# Astro Starter Kit: Minimal
+# 📚 Book Tracker
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+**Book Tracker** is a web application that allows users to search for books using the Open Library API, view book details, and save favorite books to a personal library stored locally.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## ✨ Features
 
-Inside of your Astro project, you'll see the following folders and files:
+### 🔍 Book Search
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- Search for books by title or keywords
+- Data is fetched from the **Open Library API**  
+  👉 https://openlibrary.org/dev/docs
+- Results are displayed in a **responsive grid layout**
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### 📖 Book Display
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- Each book card shows:
+  - Book cover
+  - Title
+  - Author(s)
+- Clean and modern UI using Tailwind-based components
 
-Any static assets, like images, can be placed in the `public/` directory.
+### 💾 User Library
 
-## 🧞 Commands
+- Users can save books to their personal library
+- Saved books are stored in a **local database**
+- The user’s library is displayed at the **bottom of the main page**
 
-All commands are run from the root of the project, from a terminal:
+### 📄 Book Details Page
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+- Clicking on a book opens a **dedicated book page**
+- Displays detailed book information
+- Includes a **“Remove from Library”** button
 
-## 👀 Want to learn more?
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 🛠️ Tech Stack
+
+- **Astro** — Core framework
+- **React** — Interactive UI components
+- **Tailwind CSS** — Styling
+- **StarWind UI** — UI components
+- **shadcn/ui** — Accessible and reusable UI components
+- **Open Library API** — Book data source
+
+---
+
+## 🚀 Future Improvements (Optional)
+
+- User authentication
+- Cloud-based database
+- Book categories and tags
+- Reading status (Want to Read / Reading / Finished)
