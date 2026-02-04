@@ -4,6 +4,7 @@ export const prerender = false
 import { BooksTable, db, eq } from "astro:db";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { ProcessedBook } from "@/types/book";
+import { Button } from "@/components/ui/button";
 
 
 const { id } = Astro.params
@@ -24,5 +25,24 @@ const { title, author, cover } = book[0] as unknown as ProcessedBook
 <BaseLayout>
   <h1>{title}</h1>
   <p>{author}</p>
-  {cover.url && <img src={cover.url} alt={title} />}
+  {cover.url && <img src={cover.url} alt={title} class="w-48" />}
+  <Button variant="default" data-id={id} id="remove-from-library" className="w-48">Remove from Library</Button>
 </BaseLayout>
+
+<script>
+import { actions } from "astro:actions"
+
+  const btnRemoveFromLibrary = document.getElementById("remove-from-library") as unknown as HTMLButtonElement
+
+  btnRemoveFromLibrary?.addEventListener("click", async () => {
+    const {error, data} = await actions.removeBook({ id: Number(btnRemoveFromLibrary.dataset.id)})
+    if (error) {
+      console.error(error)
+    }
+
+    if (data) {
+      window.location.href= '/'
+    }
+  })
+
+</script>

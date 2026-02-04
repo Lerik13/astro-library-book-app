@@ -65,7 +65,8 @@ function SearchBooks() {
           )}
         </Button>
       </form>
-      <div className='grid grid-cols-4 gap-4'>
+
+      <div className='grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4'>
         {books.map((book) => (
           <div key={book.id} className='grid gap-2'>
             <h2>{book.title}</h2>
@@ -76,7 +77,7 @@ function SearchBooks() {
                 alt={book.title}
                 width={book.cover.width}
                 height={book.cover.height}
-                className='h-60'
+                className='h-60 w-auto bg-gray-200 mx-auto'
               />
             ) : (
               <div className='h-60 bg-gray-200'></div>
