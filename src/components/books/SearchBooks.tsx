@@ -5,7 +5,11 @@ import React, { useState } from 'react'
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 
-function SearchBooks() {
+type Props = {
+  onBookAdded: (book: ProcessedBook) => void
+}
+
+function SearchBooks({ onBookAdded }: Props) {
   const [query, setQuery] = useState('')
   const [books, setBooks] = useState<ProcessedBook[]>([])
   const [isLoading, setIsLoading] = useState(false)
@@ -22,6 +26,7 @@ function SearchBooks() {
     }
     if (data) {
       setBooks(data as unknown as ProcessedBook[])
+      //onBookAdded(data)
     }
     setIsLoading(false)
   }
@@ -35,9 +40,11 @@ function SearchBooks() {
     if (error) {
       console.error(error)
       alert('Error saving book')
+      return
     }
+
     if (data) {
-      console.log(data)
+      onBookAdded(data)
     }
   }
 

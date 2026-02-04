@@ -1,6 +1,6 @@
 import { defineAction } from 'astro:actions'
+import { BooksTable, db } from 'astro:db'
 import { z } from 'astro:schema'
-import { db, BooksTable } from 'astro:db'
 
 export const saveBook = defineAction({
   accept: 'json',
@@ -15,12 +15,16 @@ export const saveBook = defineAction({
   }),
   handler: async ({ title, author, cover }) => {
     try {
-      const bookInsert = await db.insert(BooksTable).values({
-        title,
-        author,
-        cover,
-      })
-      return { success: true }
+      const [insertedBook] = await db
+        .insert(BooksTable)
+        .values({
+          title,
+          author,
+          cover,
+        })
+        .returning()
+
+      return insertedBook
     } catch (error) {
       console.error(error)
     }
